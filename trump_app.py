@@ -7,6 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+google_api_key = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+
+if not google_api_key:
+    st.error("Google API key not found. Please check your configuration.")
+    st.stop()
+
 def add_bg_image(image_url):
     st.markdown(
         f"""
